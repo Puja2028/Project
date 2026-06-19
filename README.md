@@ -1,0 +1,115 @@
+# Coding Agent Evaluation — Full Assignment
+
+This repository is a hands-on workspace for the **Coding Agent Eval** skill journey. It is not a test — it is a structured set of tasks to practice using coding agents for repo discovery, greenfield builds, polyglot systems, and verification.
+
+## How to use this repo
+
+1. Read each task description in the section folders below.
+2. Use a coding agent to explore, build, or verify — but **always separate what the agent suggested from what you manually verified**.
+3. Record your self-eval (yes/no) for each baseline question in [SELF_EVAL.md](SELF_EVAL.md).
+
+## Repository layout
+
+```
+Assignment/
+??? README.md                    # This file
+??? SELF_EVAL.md                 # Self-evaluation checklist
+??? sample-repo/                 # Unfamiliar repo for B1–B3, I1–I3, I6
+??? basics/
+?   ??? fastapi-transactions/    # B4 — FastAPI greenfield service
+?   ??? nodejs-transactions/     # B5 — Node.js equivalent
+?   ??? rust-log-counter/        # B6 — Rust log-level counter CLI
+??? intermediate/
+?   ??? polyglot-convert/        # I4 — FastAPI + Node.js CLI
+?   ??? docker/                  # I5 — Dockerized FastAPI service
+??? advanced/                    # A1–A6 task briefs (you execute)
+??? infra/                       # D1–D6 task briefs (you execute)
+```
+
+---
+
+## Eval: Basics
+
+| ID | Task | Folder | Time |
+|----|------|--------|------|
+| B1 | Repo artifact inventory | `sample-repo/` | 30 min |
+| B2 | API endpoint map | `sample-repo/` | 30 min |
+| B3 | Test discovery and execution | `sample-repo/` | 15 min |
+| B4 | FastAPI greenfield service | `basics/fastapi-transactions/` | 60 min |
+| B5 | Node.js greenfield API | `basics/nodejs-transactions/` | 60 min |
+| B6 | Rust greenfield CLI | `basics/rust-log-counter/` | 60 min |
+
+## Eval: Intermediate
+
+| ID | Task | Folder | Time |
+|----|------|--------|------|
+| I1 | ER diagram from repo | `sample-repo/` | 45 min |
+| I2 | End-to-end flow trace | `sample-repo/` | 45 min |
+| I3 | Small safe change + test | `sample-repo/` | 60 min |
+| I4 | FastAPI + Node.js client | `intermediate/polyglot-convert/` | 90 min |
+| I5 | Dockerize and run | `intermediate/docker/` | 60 min |
+| I6 | Bug diagnosis with agent | `sample-repo/` (seeded bug) | 60 min |
+
+## Eval: Advanced
+
+See [advanced/README.md](advanced/README.md) for A1–A6 task briefs.
+
+## Eval: Infra & DevOps
+
+See [infra/README.md](infra/README.md) for D1–D6 task briefs.
+
+---
+
+## Quick start — run implemented projects
+
+### B4 — FastAPI transactions
+
+```bash
+cd basics/fastapi-transactions
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+# In another terminal:
+pytest -v
+```
+
+### B5 — Node.js transactions
+
+```bash
+cd basics/nodejs-transactions
+npm install
+npm start
+# In another terminal:
+npm test
+```
+
+### B6 — Rust log counter
+
+```bash
+cd basics/rust-log-counter
+cargo test
+cargo run -- sample.log
+```
+
+### I4 — Currency convert (two terminals)
+
+```bash
+# Terminal 1
+cd intermediate/polyglot-convert/service
+pip install -r requirements.txt
+uvicorn app.main:app --port 8001
+
+# Terminal 2
+cd intermediate/polyglot-convert/client
+npm install
+node cli.js 100 USD EUR
+```
+
+### I5 — Docker
+
+```bash
+cd intermediate/docker
+docker build -t transactions-api .
+docker run -p 8000:8000 transactions-api
+curl http://localhost:8000/health
+```

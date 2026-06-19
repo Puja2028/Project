@@ -1,0 +1,7 @@
+INFO Application started
+WARN Disk usage above 80%
+ERROR Connection refused
+INFO Request completed
+WARN Retrying connection
+ERROR Timeout after 30s
+INFO Shutdown complete

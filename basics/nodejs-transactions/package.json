@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-transactions",
+  "version": "1.0.0",
+  "description": "B5 — Node.js transaction service for coding agent eval",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
